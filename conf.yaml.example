@@ -4,6 +4,7 @@
 # - Replace `base_url` and `model` name if you want to use a custom model
 
 BASIC_MODEL:
-  base_url: https://ark.cn-beijing.volces.com/api/v3
-  model: "doubao-1-5-pro-32k-250115"
-  api_key: xxxx
+  base_url: "https://openrouter.ai/api/v1"
+  model: "google/gemini-2.5-flash-preview"
+  # model: "openai/gpt-4.1-mini"
+  api_key: "sk-or-v1-7c011c4929b158b7014e5dda3ab757bf8614838fff7b82261f68aa3"

@@ -1,0 +1,4 @@
+.venv
+web/node_modules
+web/out
+web/.next

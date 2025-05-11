@@ -16,6 +16,9 @@ import "./src/env.js";
 // is still evolving and may not yet be fully stable for production environments.
 
 const config = {
+  // Add this line for static export
+  output: 'export',
+
   // For development mode
   turbopack: {
     rules: {
