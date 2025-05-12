@@ -106,19 +106,15 @@ def planner_node(
         return Command(goto="reporter")
 
     full_response = ""
-    try:
-        if AGENT_LLM_MAP["planner"] == "basic":
-            response = llm.invoke(messages)
-            full_response = response.model_dump_json(indent=4, exclude_none=True)
-        else:
-            response = llm.stream(messages)
-            for chunk in response:
-                full_response += chunk.content
-        logger.debug(f"Current state messages: {state['messages']}")
-        logger.info(f"Planner response: {full_response}")
-    except openai.APIError as e:
-        logger.error(f"OpenAI API Error in planner_node: Status Code: {e.status_code}, Response: {e.response.text}")
-        raise e
+    if AGENT_LLM_MAP["planner"] == "basic":
+        response = llm.invoke(messages)
+        full_response = response.model_dump_json(indent=4, exclude_none=True)
+    else:
+        response = llm.stream(messages)
+        for chunk in response:
+            full_response += chunk.content
+    logger.debug(f"Current state messages: {state['messages']}")
+    logger.info(f"Planner response: {full_response}")
 
     try:
         curr_plan = json.loads(repair_json_output(full_response))
@@ -205,16 +201,12 @@ def coordinator_node(
     """Coordinator node that communicate with customers."""
     logger.info("Coordinator talking.")
     messages = apply_prompt_template("coordinator", state)
-    try:
-        response = (
-            get_llm_by_type(AGENT_LLM_MAP["coordinator"])
-            .bind_tools([handoff_to_planner])
-            .invoke(messages)
-        )
-        logger.debug(f"Current state messages: {state['messages']}")
-    except openai.APIError as e:
-        logger.error(f"OpenAI API Error in coordinator_node: Status Code: {e.status_code}, Response: {e.response.text}")
-        raise e
+    response = (
+        get_llm_by_type(AGENT_LLM_MAP["coordinator"])
+        .bind_tools([handoff_to_planner])
+        .invoke(messages)
+    )
+    logger.debug(f"Current state messages: {state['messages']}")
 
     goto = "__end__"
     locale = state.get("locale", "en-US")  # Default locale if not specified
@@ -336,11 +328,7 @@ async def _execute_agent_step(
         )
 
     # Invoke the agent
-    try:
-        result = await agent.ainvoke(input=agent_input)
-    except openai.APIError as e:
-        logger.error(f"OpenAI API Error in _execute_agent_step ({agent_name}): Status Code: {e.status_code}, Response: {e.response.text}")
-        raise e
+    result = await agent.ainvoke(input=agent_input)
 
     # Process the result
     response_content = result["messages"][-1].content

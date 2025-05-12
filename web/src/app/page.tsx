@@ -41,9 +41,9 @@ function Header() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" asChild>
-            <Link href="https://github.com/bytedance/deer-flow" target="_blank">
+            <Link href="https://github.com/chmod777john/deer-flow-deploy" target="_blank">
               <GithubOutlined />
-              Star on GitHub
+              https://github.com/chmod777john/deer-flow-deploy
             </Link>
           </Button>
         </div>
