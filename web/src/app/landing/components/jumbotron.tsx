@@ -43,6 +43,10 @@ export function Jumbotron() {
         您在网站上试用时，耗费的是我的 API key, 初衷是希望大伙儿都能体验一下。但我的腰包也是有限的，望看官不要过分薅羊毛或者 DDoS ~
         如果你也想部署，我写了一篇教程教你如何 Docker 镜像化部署到阿里云上面。
         如果觉得我这个行动有意思的话，请加我微信号 drinking-soda 我们一起交流交流
+        The official DeerFlow does not provide a trial; it can only be deployed by running the code. Most people do not have this capability. I think this is a good opportunity for me to deploy a website for public use and gain some traffic.
+        When you try it on the website, you are using my API key. The original intention was to let everyone experience it. However, my budget is also limited, so I hope you don&apos;t overuse it or DDoS it~
+        If you also want to deploy it, I have written a tutorial on how to deploy it to Alibaba Cloud using a Docker image.
+        If you find this initiative interesting, please add my WeChat ID drinking-soda and let&apos;s communicate.
         </p>
         <div className="flex gap-6 group relative">
           <Button className="hidden text-lg md:flex md:w-42" size="lg" asChild>
@@ -56,7 +60,7 @@ export function Jumbotron() {
                   : "/chat.html"
               }
             >
-              免费用 <ChevronRight />
+              Free Use <ChevronRight />
             </Link>
           </Button>
           {!env.NEXT_PUBLIC_STATIC_WEBSITE_ONLY && (
@@ -71,7 +75,7 @@ export function Jumbotron() {
                 target="_blank"
               >
                 <GithubFilled />
-                部署教程
+                Deploy Tutorial
               </Link>
             </Button>
           )}
