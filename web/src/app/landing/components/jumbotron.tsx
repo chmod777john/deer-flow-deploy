@@ -64,20 +64,34 @@ export function Jumbotron() {
             </Link>
           </Button>
           {!env.NEXT_PUBLIC_STATIC_WEBSITE_ONLY && (
-            <Button
-              className="w-42 text-lg"
-              size="lg"
-              variant="outline"
-              asChild
-            >
-              <Link
-                href="https://github.com/bytedance/deer-flow"
-                target="_blank"
+            <>
+              <Button
+                className="w-42 text-lg"
+                size="lg"
+                variant="outline"
+                asChild
               >
-                <GithubFilled />
-                Deploy Tutorial
-              </Link>
-            </Button>
+                <Link
+                  href="https://zhuanlan.zhihu.com/p/1905103485109798723"
+                  target="_blank"
+                >
+                  部署教程-zh
+                </Link>
+              </Button>
+              <Button
+                className="w-42 text-lg"
+                size="lg"
+                variant="outline"
+                asChild
+              >
+                <Link
+                  href="https://github.com/chmod777john/deer-flow-deploy/"
+                  target="_blank"
+                >
+                  Tutorial-En
+                </Link>
+              </Button>
+            </>
           )}
         </div>
       </div>
