@@ -39,12 +39,12 @@ export function Jumbotron() {
           <AuroraText>at Your Fingertips</AuroraText>
         </h1>
         <p className="max-w-4xl p-2 text-center text-sm opacity-85 md:text-2xl">
-          Meet DeerFlow, your personal Deep Research assistant. With powerful
-          tools like search engines, web crawlers, Python and MCP services, it
-          delivers instant insights, comprehensive reports, and even captivating
-          podcasts.
+        官方的 DeerFlow 没有提供试用，只能从代码运行部署。大部分人没有这个能力。我认为这是个好机会，我来部署一个网站让大众使用，收获一批流量。
+        您在网站上试用时，耗费的是我的 API key, 初衷是希望大伙儿都能体验一下。但我的腰包也是有限的，望看官不要过分薅羊毛或者 DDoS ~
+        如果你也想部署，我写了一篇教程教你如何 Docker 镜像化部署到阿里云上面。
+        如果觉得我这个行动有意思的话，请加我微信号 drinking-soda 我们一起交流交流
         </p>
-        <div className="flex gap-6">
+        <div className="flex gap-6 group relative">
           <Button className="hidden text-lg md:flex md:w-42" size="lg" asChild>
             <Link
               target={
@@ -53,10 +53,10 @@ export function Jumbotron() {
               href={
                 env.NEXT_PUBLIC_STATIC_WEBSITE_ONLY
                   ? "https://github.com/bytedance/deer-flow"
-                  : "/chat"
+                  : "/chat.html"
               }
             >
-              Get Started <ChevronRight />
+              免费用 <ChevronRight />
             </Link>
           </Button>
           {!env.NEXT_PUBLIC_STATIC_WEBSITE_ONLY && (
@@ -71,7 +71,7 @@ export function Jumbotron() {
                 target="_blank"
               >
                 <GithubFilled />
-                Learn More
+                部署教程
               </Link>
             </Button>
           )}
